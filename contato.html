@@ -66,65 +66,51 @@
           </div>
 
           <div class="form-group">
-            <label for="nome">Nome</label>
+            <label>Cidade</label>
             <input
-              id="nome"
               type="text"
-              placeholder="Nome"
-              name="nome"
+              placeholder="Cidade*"
+              name="city"
               required
             />
           </div>
 
           <div class="form-group">
-            <label for="nome">Nome</label>
-            <input
-              id="nome"
-              type="text"
-              placeholder="Nome"
-              name="nome"
-              required
-            />
+            <label>Opções de Curso</label>
+            <select name="course">
+                <option value="web">Web Development</option>
+                <option value="react">React Native</option>
+                <option value="nodejs">NodeJS</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label for="nome">Nome</label>
-            <input
-              id="nome"
-              type="text"
-              placeholder="Nome"
-              name="nome"
-              required
-            />
+            <label>Período de Interesse</label>
+            <select name="period">
+                <option value="morning" selected>Manhã</option>
+                <option value="afternoon">Tarde</option>
+                <option value="night">Noite</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label for="nome">Nome</label>
-            <input
-              id="nome"
-              type="text"
-              placeholder="Nome"
-              name="nome"
-              required
-            />
+            <label>Mensagem</label>
+            <textarea name="message"></textarea>
           </div>
-
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input
-              id="nome"
-              type="text"
-              placeholder="Nome"
-              name="nome"
-              required
-            />
-          </div>
-
-
 
           <button type="submit">Enviar</button>
         </form>
       </div>
+    </div>
+
+    <div class="footer">
+        <div class="address">
+            <i class="fas fa-map"></i>
+            <a href="https://goo.gl/maps/EpLHd63LjGrtTTqM8" target="_blank">
+                Rua Santana, 820, Centro <br>
+                Ponta Grossa/PR
+            </a>
+        </div>        
     </div>
   </body>
 </html>
