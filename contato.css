@@ -31,6 +31,8 @@ body {
 }
 
 .card {
+  position: relative;
+  z-index: 1;
   padding: 40px;
   border-radius: 4px;
   box-shadow: 0 4px 10px #525252;
@@ -65,30 +67,57 @@ body {
 }
 
 .form-group > select {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
 }
 
 .form-group > textarea {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 12px;
-    resize: vertical;
-    min-height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  resize: vertical;
+  min-height: 200px;
 }
 
 form > button {
-    width: 100%;
-    padding: 12px;
-    background: #dc3545;
-    color: #f8f9fa;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  background: #dc3545;
+  color: #f8f9fa;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 form > button:hover {
-    background: #e04555;
+  background: #e04555;
+}
+
+.footer {
+  background: #313131;
+  padding: 250px 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.column-footer > i {
+  border: 6px solid #dc3545;
+  width: 130px;
+  height: 130px;
+  color: #dc3545;
+  font-size: 50px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
