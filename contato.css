@@ -100,9 +100,11 @@ form > button:hover {
   padding: 250px 200px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .column-footer {
+  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,4 +122,21 @@ form > button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.6s;
+}
+
+/* .fa-phone {
+  color: blue !important;
+} */
+
+.column-footer > a {
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+.column-footer > i:hover {
+  border: 6px solid #f8f9fa;
+  color: #f8f9fa;
 }
