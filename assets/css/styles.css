@@ -1,0 +1,142 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+  background: #252422;
+  color: #fffcf2;
+}
+
+.header-menu {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: none !important;
+}
+
+.nav-link {
+  color: #fffcf2 !important;
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.ps5-banner {
+  position: absolute;
+  z-index: 2;
+  width: 30%;
+  left: 10%;
+  top: 33%;
+  text-align: center;
+  display: block;
+}
+
+.ps5-text {
+  color: #fffcf2;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.orange {
+  color: #eb5e28;
+}
+
+.orange-o {
+  color: #eb5e28;
+  opacity: 0.8;
+}
+
+.produto {
+  background: #403d39;
+  border-radius: 10px;
+  height: 370px;
+  box-shadow: 0 6px 16px #3c3c3c;
+  max-width: 320px;
+  position: relative;
+}
+
+.img-produto {
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wd-70 {
+  width: 70% !important;
+}
+
+.img-produto > img {
+  width: 50%;
+}
+
+.detalhe-produto {
+  padding: 0 24px;
+}
+
+.add-cart-produto {
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-cart-produto > i {
+  background: #fffcf2;
+  color: #403d39;
+  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.preco-produto {
+  margin: 0;
+  color: #eb5e28;
+  font-size: 26px;
+  font-weight: 500;
+  width: 80%;
+  white-space: nowrap;
+}
+
+.btn {
+  min-width: 260px;
+  min-height: 50px;
+}
+
+.btn-orange {
+  background: #cb5427;
+  color: #fffcf2;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1026px) {
+  .add-cart-produto > i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .ps5-banner {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .col-produto {
+    display: flex;
+    justify-content: center;
+  }
+
+  .add-cart-produto > i {
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}
