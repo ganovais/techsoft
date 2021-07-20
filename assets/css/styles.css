@@ -144,6 +144,45 @@ body {
   justify-content: center;
 }
 
+.banner-top {
+  background: url('../images/banner3.png');
+  height: 272px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.banner-top-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.6;
+  z-index: 2;
+}
+
+.title-blur {
+  position: relative;
+  z-index: 3;
+}
+
+/* --------- Listagem de produtos --------- */
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.filter {
+  background: #403d39;
+  border-radius: 10px;
+  min-height: 370px;
+}
+
 @media screen and (max-width: 1026px) {
   .add-cart-produto > i {
     position: absolute;
