@@ -1,7 +1,11 @@
+:root {
+  --white: #fffcf2;
+}
+
 body {
   font-family: 'Ubuntu', sans-serif;
   background: #252422;
-  color: #fffcf2;
+  color: var(--white);
 }
 
 .header-menu {
@@ -14,7 +18,7 @@ body {
 }
 
 .nav-link {
-  color: #fffcf2 !important;
+  color: var(--white) !important;
 }
 
 .carousel-item {
@@ -32,7 +36,7 @@ body {
 }
 
 .ps5-text {
-  color: #fffcf2;
+  color: var(--white);
   font-weight: 500;
   font-size: 30px;
 }
@@ -67,12 +71,26 @@ body {
   width: 70% !important;
 }
 
-.img-produto > img {
+.img-produto > a {
+  text-align: center;
+}
+
+.img-produto > a > img {
   width: 50%;
 }
 
 .detalhe-produto {
   padding: 0 24px;
+}
+
+.detalhe-produto > a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.detalhe-produto > a:visited {
+  color: var(--white);
+  text-decoration: none;
 }
 
 .add-cart-produto {
@@ -83,7 +101,7 @@ body {
 }
 
 .add-cart-produto > i {
-  background: #fffcf2;
+  background: var(--white);
   color: #403d39;
   border-radius: 10px;
   width: 35px;
@@ -103,15 +121,27 @@ body {
   white-space: nowrap;
 }
 
-.btn {
-  min-width: 260px;
-  min-height: 50px;
-}
-
 .btn-orange {
   background: #cb5427;
-  color: #fffcf2;
+  color: var(--white);
   border-radius: 10px;
+}
+
+.btn-theme {
+  min-width: 259px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-theme p {
+  margin-right: 10px;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1026px) {
