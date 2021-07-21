@@ -181,6 +181,77 @@ input:focus {
   background: #403d39;
   border-radius: 10px;
   min-height: 370px;
+  box-shadow: 0 6px 16px #3c3c3c;
+  padding: 31px;
+}
+
+.filter > form > .input-search {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.filter > form > .input-search > input {
+  background: #252422;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  border-radius: 10px;
+  color: var(--white);
+  height: 40px;
+}
+
+.filter > form > .input-search > i {
+  position: absolute;
+  font-size: 20px;
+  right: 10px;
+  top: 10px;
+}
+
+.filter > form > ul {
+  list-style: none;
+  padding: 0;
+}
+
+.filter > form > ul > li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filter > form > ul > li > input {
+  -webkit-appearance: none;
+  background-color: #252422;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.filter > form > ul > li > input:checked:after {
+  content: '\2714';
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 5;
+  color: #eb5e28;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.pagination-item {
+  background: var(--white);
+  width: 43px;
+  height: 43px;
+  border-radius: 10px;
+  margin-right: 20px;
+  color: #252422;
+  font-size: 31px;
+  text-align: center;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1026px) {
