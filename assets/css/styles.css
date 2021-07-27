@@ -323,7 +323,7 @@ input:focus {
 /* --------- Carrinho --------- */
 .carrinho-item {
   display: flex;
-  max-height: 140px;
+  min-height: 140px;
   background: #403d39;
   border-radius: 10px;
   padding: 15px;
@@ -362,6 +362,21 @@ input:focus {
 
 .carrinho-acao > input {
   width: 80px;
+  background: #252422 !important;
+  border: none;
+  border-radius: 15px;
+  color: #cb5427;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
 }
 
 @media screen and (max-width: 1026px) {
@@ -375,6 +390,12 @@ input:focus {
 @media screen and (max-width: 992px) {
   .ps5-banner {
     display: none;
+  }
+
+  .carrinho-acao {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
   }
 }
 
