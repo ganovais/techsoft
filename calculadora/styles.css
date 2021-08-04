@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #252422;
+  color: #fffcf2;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+input:focus {
+  outline: none;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.calculator {
+  padding: 47px;
+  border-radius: 10px;
+  background: #403d3973;
+  box-shadow: 0px -1px 16px #0a0a0a;
+  width: 400px;
+  height: 500px;
+}
+.buttons {
+  text-align: center;
+}
+
+.screen {
+  margin-bottom: 20px;
+}

@@ -36,3 +36,11 @@ img {
   font-size: 3rem;
   color: #46b885;
 }
+
+.day,
+.hour,
+.minute,
+.second {
+  color: #4c5b5f;
+  font-size: 2rem;
+}
