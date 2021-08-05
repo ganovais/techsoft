@@ -1,56 +1,58 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
-    <link rel="stylesheet" href="styles.css" />
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Calculadora</title>
+   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="calculator">
-            <div class="screen">
-                <input type="text" id="value" placeholder="calcular..." autocomplete="off" />
+   <div class="container">
+      <div class="calculator">
+         <div class="screen">
+            <input type="text" id="value" placeholder="calcular..." autocomplete="off" />
+         </div>
+         <div class="buttons">
+            <div class="row">
+               <p class="button operation clear" data-operation="clear">LIMPAR</p>
+               <p class="button operation" data-operation="/">/</p>
             </div>
-            <div class="buttons">
-                <div class="row">
-                    <p class="button operation clear" data-operation="clear">LIMPAR</p>
-                    <p class="button operation" data-operation="/">/</p>
-                </div>
 
-                <div class="row">
-                    <p class="button" data-number="7">7</p>
-                    <p class="button" data-number="8">8</p>
-                    <p class="button" data-number="9">9</p>
-                    <p class="button operation" data-operation="*">X</p>
-                </div>
-
-                <div class="row">
-                    <p class="button" data-number="4">4</p>
-                    <p class="button" data-number="5">5</p>
-                    <p class="button" data-number="6">6</p>
-                    <p class="button operation" data-operation="-">-</p>
-                </div>
-
-                <div class="row">
-                    <p class="button" data-number="1">1</p>
-                    <p class="button" data-number="2">2</p>
-                    <p class="button" data-number="3">3</p>
-                    <p class="button operation" data-operation="+">+</p>
-                </div>
-
-                <div class="row">
-                    <p class="button" data-number="0">0</p>
-                    <p class="button" data-number=",">,</p>
-                    <p class="button operation equal" data-operation="=">=</p>
-                </div>
-
-                <h4 id="error">Erro na operação</h4>
+            <div class="row">
+               <p class="button" data-number="7">7</p>
+               <p class="button" data-number="8">8</p>
+               <p class="button" data-number="9">9</p>
+               <p class="button operation" data-operation="*">X</p>
             </div>
-        </div>
-    </div>
+
+            <div class="row">
+               <p class="button" data-number="4">4</p>
+               <p class="button" data-number="5">5</p>
+               <p class="button" data-number="6">6</p>
+               <p class="button operation" data-operation="-">-</p>
+            </div>
+
+            <div class="row">
+               <p class="button" data-number="1">1</p>
+               <p class="button" data-number="2">2</p>
+               <p class="button" data-number="3">3</p>
+               <p class="button operation" data-operation="+">+</p>
+            </div>
+
+            <div class="row">
+               <p class="button" data-number="0">0</p>
+               <p class="button" data-number=",">,</p>
+               <p class="button operation equal" data-operation="=">=</p>
+            </div>
+
+            <h4 id="error">Erro na operação</h4>
+         </div>
+      </div>
+   </div>
+
+   <script src="scripts.js"></script>
 </body>
 
 </html>
