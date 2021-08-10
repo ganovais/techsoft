@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mudar a cor</title>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         const h1 = document.getElementsByTagName('h1')[0];
+
+         document.querySelector('#blue').onclick = () => {
+            h1.innerHTML = 'AZUL'
+            h1.style.color = 'blue'
+         }
+
+         document.querySelector('#green').onclick = () => {
+            h1.innerHTML = 'VERDE';
+            h1.style.color = 'green'
+         }
+      })
+
+      function mudaVermelho() {
+         const h1 = document.getElementsByTagName('h1')[0];
+         h1.innerHTML = 'Vermelho';
+         h1.style.color = 'red'
+      }
+
+   </script>
+</head>
+
+<body>
+   <h1>Hello World!</h1>
+   <button id="red" onclick="mudaVermelho()">Vermelho</button>
+   <button id="blue">Azul</button>
+   <button id="green">Verde</button>
+
+</body>
+
+</html>
