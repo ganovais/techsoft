@@ -17,7 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const addInput = document.getElementById('task');
   const title = document.querySelector('#title');
 
+  //   localStorage.setItem('nome', 'Gabriel Novais');
+  //   const nome = localStorage.getItem('nome');
+  //   alert(nome);
+
   addButton.disabled = true;
+  addInput.focus();
 
   addInput.onkeyup = () => {
     if (addInput.value.length > 0) {
