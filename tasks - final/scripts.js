@@ -1,9 +1,17 @@
+var tasks = [];
+
 const addEventToRemove = () => {
   const title = document.querySelector('#title');
   const removeButtons = document.querySelectorAll('.remove-task');
   removeButtons.forEach((button) => {
     button.onclick = () => {
+      const indexTask = tasks.findIndex(
+        (item) => item.id == button.parentElement.id
+      );
+
       button.parentElement.remove();
+      tasks.splice(indexTask, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
 
       if (!document.querySelector('#tasks').childNodes.length) {
         title.innerHTML = 'Lista vazia';
@@ -16,10 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const addButton = document.getElementsByClassName('plus')[0];
   const addInput = document.getElementById('task');
   const title = document.querySelector('#title');
-
-  //   localStorage.setItem('nome', 'Gabriel Novais');
-  //   const nome = localStorage.getItem('nome');
-  //   alert(nome);
+  let savedTasks = localStorage.getItem('tasks');
 
   addButton.disabled = true;
   addInput.focus();
@@ -32,23 +37,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  if (savedTasks && savedTasks != '[]') {
+    tasks = JSON.parse(savedTasks);
+
+    title.innerHTML = 'Minhas tarefas';
+    if (!tasks.length) {
+      tasks = [tasks];
+    }
+
+    tasks.map((item) => {
+      document
+        .querySelector('#tasks')
+        .insertAdjacentHTML('afterbegin', item.html);
+    });
+
+    addEventToRemove();
+  }
+
   addButton.onclick = () => {
     if (!addInput.value) {
       return;
     }
 
-    document
-      .querySelector('#tasks')
-      .insertAdjacentHTML(
-        'afterbegin',
-        '<li class="task-item">' +
-          '<input type="checkbox" />' +
-          '<p class="text-task">' +
-          addInput.value +
-          '</p>' +
-          '<p class="remove-task"> -- </p>' +
-          '</li>'
-      );
+    const uuid = new Date().getTime();
+
+    const taskHtml =
+      '<li class="task-item" id="' +
+      uuid +
+      '" >' +
+      '<input type="checkbox" />' +
+      '<p class="text-task">' +
+      addInput.value +
+      '</p>' +
+      '<p class="remove-task"> -- </p>' +
+      '</li>';
+
+    document.querySelector('#tasks').insertAdjacentHTML('beforeend', taskHtml);
+
+    tasks.unshift({ id: uuid, html: taskHtml });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 
     title.innerHTML = 'Minhas tarefas';
     addInput.value = '';

@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         const addButton = document.querySelector("#add");
+         const resetButton = document.getElementById('reset');
+         const h1 = document.querySelector('#counter');
+         let counter = 0;
+
+         if (localStorage.getItem('counter')) {
+            counter = localStorage.getItem('counter');
+            h1.innerHTML = counter
+         }
+
+         addButton.onclick = () => {
+            //counter = counter + 1
+            counter++;
+            h1.innerHTML = counter;
+            localStorage.setItem('counter', counter);
+         }
+
+         resetButton.onclick = () => {
+            counter = 0;
+            h1.innerHTML = counter;
+            // localStorage.setItem('counter', 0);
+            localStorage.removeItem('counter');
+         }
+
+      })
+   </script>
+</head>
+
+<body>
+   <h1 id="counter">0</h1>
+   <button id="add">Adicionar</button>
+   <button id="reset">Zerar</button>
+</body>
+
+</html>
