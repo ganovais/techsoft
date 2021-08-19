@@ -1,5 +1,5 @@
-import e from "express";
 import express from "express";
+import { uuid } from "uuidv4";
 
 const api = express();
 
@@ -35,7 +35,20 @@ api.get("/blogs/:id", (request, response) => {
    return response.json({ message, blog });
 });
 
-api.post("/blogs", (request, responde) => {});
+api.post("/blogs", (request, response) => {
+   const { title, body } = request.body;
+
+   const blog: IBlog = {
+      id: uuid(),
+      title,
+      body,
+      created_at: new Date(),
+   };
+
+   blogs.push(blog);
+
+   return response.json(blog);
+});
 
 api.listen(3333, () => {
    console.log("🚀 Server started at port 3333!");
