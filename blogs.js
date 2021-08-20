@@ -15,12 +15,12 @@ const capitalizeFirstLetter = (string) => {
 const addEventOnClick = () => {
   document.querySelectorAll('.search').forEach((item) => {
     item.onclick = () => {
-      fetch(`https://jsonplaceholder.typicode.com/posts/${item.dataset.id}`)
+      fetch(`http://localhost:3333/blogs/${item.dataset.id}`)
         .then((response) => response.json())
         .then((data) => {
           document.querySelector('.searched').innerHTML = `
-             <h1>${data.title}</h1>
-             <p>${data.body}</p>
+             <h1>${data.blog.title}</h1>
+             <p>${data.blog.body}</p>
           `;
         });
     };
@@ -28,7 +28,7 @@ const addEventOnClick = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://jsonplaceholder.typicode.com/posts')
+  fetch('http://localhost:3333/blogs')
     .then((response) => response.json())
     .then((data) => {
       let content = '';
