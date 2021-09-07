@@ -1,0 +1,25 @@
+{
+  "name": "suporte/cliente",
+  "description": "Plataforma de atendimento ao cliente",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Novais de Souza",
+      "email": "g.novais1997@gmail.com"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "./"
+    ]
+  },
+  "require": {
+    "pecee/simple-router": "4.3.2.1",
+    "ircmaxell/password-compat": "^1.0",
+    "phpmailer/phpmailer": "^6.4"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.4"
+  }
+}
