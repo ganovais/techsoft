@@ -19,9 +19,3 @@
 7 - Editar  
 8 - Adicionar no final  
     127.0.0.1   suporte.soft
-    
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-    <?php startblock('scripts'); ?>
-    <?php endblock(); ?>
