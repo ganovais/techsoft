@@ -82,14 +82,15 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringfy(data)
+                body: JSON.stringify(data)
             }).then(response => response.json())
             .then(data => {
                 if(!data.error) {
                     toastr.success('Usuário cadastrado com sucesso.');
+                    document.querySelector('.btn-theme').disabled = true;
                     setTimeout(() => {
                         window.location.href = '/';
-                    }, 2000);
+                    }, 3000);
                 } else {
                     toastr.warning(data.message);
                     document.querySelector('#email').value = '';

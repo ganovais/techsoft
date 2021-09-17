@@ -34,3 +34,48 @@
     </div>
 </div>
 <?php endblock(); ?>
+
+<?php startblock('scripts'); ?>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('#register').onsubmit = (e) => {
+            e.preventDefault();
+            const data = {
+                email: document.querySelector('#email').value,
+                password: document.querySelector('#password').value,
+            }
+
+
+            if(!data.email) {
+                toastr.warning('Informe seu e-mail para continuar.')
+                return false;
+            }
+
+            if(!data.password) {
+                toastr.warning('Informe uma senha para continuar.');
+                return false;
+            } else if(data.password.length < 6) {
+                toastr.warning('Informe uma senha com 6 ou mais caracteres.');
+                return false;
+            }
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+            .then(data => {
+                if(!data.error && data.user) {
+                    window.location.href = '/atendimento';
+                } else {
+                    toastr.warning('Usuário e/ou senha incorretos.');
+                }
+            })
+
+            return false;
+        }
+    })
+</script>
+<?php endblock(); ?>

@@ -9,8 +9,7 @@ class UserController
         $data = input()->all();
         $email = $data['email'];
 
-        $userModel = new User();
-        $user = $userModel->findUserByEmail($email);
+        $user = User::findUserByEmail($email);
 
         if(!empty($user)) {
             return json_encode([
@@ -19,5 +18,19 @@ class UserController
             ]);
         }
 
+        return json_encode([
+           'error'  => false,
+           'user' => User::create($data),
+        ]);
+    }
+
+    public function login()
+    {
+        $data = input()->all();
+
+        return json_encode([
+            'error' => false,
+            'user' => User::login($data),
+        ]);
     }
 }

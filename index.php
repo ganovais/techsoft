@@ -7,4 +7,5 @@ Router::get('/', 'SiteController@index');
 Router::get('/cadastrar', 'SiteController@cadastrar');
 
 Router::post('/cadastrar', 'UserController@cadastrar');
+Router::post('/login', 'UserController@login');
 Router::start();
