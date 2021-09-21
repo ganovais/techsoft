@@ -38,7 +38,7 @@
 <?php startblock('scripts'); ?>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('#register').onsubmit = (e) => {
+        document.querySelector('#login').onsubmit = (e) => {
             e.preventDefault();
             const data = {
                 email: document.querySelector('#email').value,

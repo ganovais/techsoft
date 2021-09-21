@@ -5,6 +5,7 @@ use Pecee\SimpleRouter\SimpleRouter as Router;
 
 Router::get('/', 'SiteController@index');
 Router::get('/cadastrar', 'SiteController@cadastrar');
+Router::get('/atendimento', 'SiteController@atendimento');
 
 Router::post('/cadastrar', 'UserController@cadastrar');
 Router::post('/login', 'UserController@login');

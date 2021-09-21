@@ -13,4 +13,18 @@ class SiteController
     {
         $this->view('site/cadastrar/index');
     }
+
+    public function atendimento()
+    {
+        $user = new User();
+        if($user->isLogged()) {
+            if($_SESSION['admin']) {
+                header("Location: ../admin");
+            }
+        } else {
+            header("Location: ../");
+        }
+
+        $this->view('site/atendimento/index');
+    }
 }

@@ -66,4 +66,13 @@ class User
 
         return false;
     }
+
+    public static function isLogged() 
+    {
+        if(!empty($_SESSION['logado']) && $_SESSION['logado']) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
