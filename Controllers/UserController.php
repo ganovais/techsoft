@@ -28,9 +28,17 @@ class UserController
     {
         $data = input()->all();
 
+        $user = new User();
         return json_encode([
             'error' => false,
-            'user' => User::login($data),
+            'user' => $user->login($data),
         ]);
+    }
+
+    public function logout()
+    {
+        $user = new User();
+        $user->logout();
+        header("Location: ./");
     }
 }

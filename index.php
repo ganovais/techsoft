@@ -9,4 +9,5 @@ Router::get('/atendimento', 'SiteController@atendimento');
 
 Router::post('/cadastrar', 'UserController@cadastrar');
 Router::post('/login', 'UserController@login');
+Router::get('/logout', 'UserController@logout');
 Router::start();

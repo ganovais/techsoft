@@ -75,4 +75,9 @@ class User
             return false;
         }
     }
+
+    public function logout()
+    {
+        session_destroy();
+    }
 }
