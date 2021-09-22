@@ -27,4 +27,16 @@ class SiteController
 
         $this->view('site/atendimento/index');
     }
+
+    public function mensagem() {
+        $user = new User();
+        if($user->isLogged() == false){
+            header("Location: ../");
+        }
+        if($_SESSION["msg"] == false){
+            header("Location: ../");
+        }
+        $_SESSION["msg"] = false;
+        $this->view('site/mensagem_envio');
+    }
 }
