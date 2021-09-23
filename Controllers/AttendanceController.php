@@ -60,7 +60,7 @@ class AttendanceController
             $mail->addAddress('para_quem@example.com'); 
 
             $mail->isHTML(true);
-            $mail->Subject = 'Atendimento via Site recebido';
+            $mail->Subject = 'Atendimento via Site recebido'; //Assunto
             $mail->Body    = '<strong>Assunto: </strong>' . $title . '<br><strong>Mensagem: </strong>' . $text;
 
             $mail->send();

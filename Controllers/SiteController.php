@@ -6,11 +6,24 @@ class SiteController
 
     public function index() 
     {
+        $user = new User();
+        if($user->isLogged()) {
+            if($_SESSION['admin']) {
+                header('Location: ../admin');
+            } else {
+                header('Location: ../atendimento');
+            }
+            
+        }
         $this->view('site/login/index');
     }
 
     public function cadastrar()
     {
+        $user = new User();
+        if($user->isLogged()) {
+            header('Location: ../atendimento');
+        }
         $this->view('site/cadastrar/index');
     }
 
@@ -38,5 +51,15 @@ class SiteController
         }
         $_SESSION["msg"] = false;
         $this->view('site/mensagem_envio');
+    }
+
+    public function admin()
+    {
+        $user = new User();
+        if(!$user->isLogged()) {
+            header('Location: ../');
+        }
+
+        $this->view('sistema/dashboard/index');
     }
 }
