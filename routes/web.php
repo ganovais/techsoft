@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::post('/tasks', 'SiteController@saveTask');
-Route::delete('/task/{id}', 'SiteController@deleteTask');
 Route::get('/tasks', 'SiteController@getTasks');
+Route::post('/tasks', 'SiteController@saveTask');
