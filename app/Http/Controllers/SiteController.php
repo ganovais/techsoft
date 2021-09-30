@@ -12,6 +12,11 @@ class SiteController extends Controller
         $task = new Task();
         $task->fill($request->toArray());
         $task->save();
+
+        return response()->json([
+         'error' => false,
+         'task' => $task
+      ]);
     }
 
     public function getTasks()

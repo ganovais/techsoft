@@ -60,6 +60,31 @@ document.addEventListener("DOMContentLoaded", () => {
          body: JSON.stringify(data),
       })
          .then((response) => response.json())
-         .then((data) => {});
+         .then((data) => {
+            if (!data.error) {
+               const task = data.task;
+               const taskHtml =
+                  '<li class="task-item" id="' +
+                  task.id +
+                  '" >' +
+                  '<input type="checkbox" />' +
+                  '<input disabled class="text-task" value="' +
+                  task.description +
+                  '"/>' +
+                  '<p class="remove-task"> -- </p>' +
+                  "</li>";
+
+               document
+                  .querySelector("#tasks")
+                  .insertAdjacentHTML("beforeend", taskHtml);
+            }
+
+            addInput.value = "";
+            addInput.focus();
+            addButton.disabled = true;
+
+            // addEventToRemove();
+            // addEventToUpdate();
+         });
    };
 });
