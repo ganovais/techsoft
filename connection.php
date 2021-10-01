@@ -8,7 +8,7 @@ class Conexao
     {
         try {
             if(!isset(self::$instance)) {
-                self::$instance = new PDO("mysql:host=localhost;dbname=suporte_cliente", "root", "root");
+                self::$instance = new PDO("mysql:host=localhost;dbname=suporte", "root", "root");
             }
             return self::$instance;
         } catch(Exception $e) {
