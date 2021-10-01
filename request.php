@@ -9,6 +9,7 @@
 
 <p>Olá com REQUEST <?php echo $_REQUEST['nome'] ?> </p>
 
+<?php if(isset($_POST['nome']) && isset($_POST['idade'])) : ?>
 <p>
     Olá <?= $_POST['nome'] ?> 
     sua idade é <?= $_POST['idade'] > 18 ? 'maior' : 'menor' ?> que 18
@@ -24,3 +25,4 @@
     <?php endif; ?>
     que 18
 </p>
+<?php endif; ?>
