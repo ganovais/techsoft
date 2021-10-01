@@ -1,6 +1,6 @@
 const countdown = () => {
   //   console.log('Hello World');
-  const endDate = new Date('Aug 3, 2021 20:57:00').getTime();
+  const endDate = new Date('Oct 2, 2021 13:00:00').getTime();
   const now = new Date().getTime();
   const distance = endDate - now;
 
