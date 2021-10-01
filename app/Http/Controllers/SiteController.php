@@ -28,4 +28,15 @@ class SiteController extends Controller
        ]);
     }
 
+    public function deleteTask($id)
+    {
+       $task = new Task();
+       $task = $task->findOrFail($id);
+       $task->delete();
+
+       return response()->json([
+          'error' => false
+       ]);
+    }
+
 }

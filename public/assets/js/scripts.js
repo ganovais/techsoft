@@ -1,3 +1,48 @@
+const addEventToRemove = () => {
+   const title = document.querySelector("#title");
+   const removeButtons = document.querySelectorAll(".remove-task");
+
+   removeButtons.forEach((button) => {
+      button.onclick = () => {
+         const id = button.parentElement.id;
+
+         const token = document.querySelector(
+            'meta[name="csrf-token"]'
+         ).content;
+         fetch(`${baseUrl}/task/${id}`, {
+            method: "DELETE",
+            headers: {
+               "X-CSRF-TOKEN": token,
+            },
+         })
+            .then((response) => response.json())
+            .then((data) => {
+               if (!data.error) {
+                  button.parentElement.remove();
+
+                  if (!document.querySelector("#tasks").childNodes.length) {
+                     title.innerHTML = "Não há tarefas";
+                  }
+               }
+               console.log(data);
+            });
+      };
+   });
+};
+
+const addEventToUpdate = () => {
+   const tasks = document.querySelectorAll(".task-item");
+   tasks.forEach((button) => {
+      button.ondblclick = () => {
+         const id = button.id;
+
+         button.childNodes[1].disabled = false;
+         button.childNodes[1].focus();
+         button.childNodes[1].classList.add("input-enabled");
+      };
+   });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
    const addButton = document.querySelector(".plus");
    const addInput = document.querySelector("#task");
@@ -28,11 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
                      .insertAdjacentHTML("afterbegin", taskHtml);
                });
 
-               // addEventToRemove();
-               // addEventToUpdate();
+               addEventToRemove();
+               addEventToUpdate();
                title.innerHTML = "Minhas tarefas";
             } else {
-               title.innerHTML = "Cadastre sua primeira tarefa";
+               title.innerHTML = "Não há tarefas";
             }
          }
       });
@@ -82,9 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
             addInput.value = "";
             addInput.focus();
             addButton.disabled = true;
+            title.innerHTML = "Minhas tarefas";
 
-            // addEventToRemove();
-            // addEventToUpdate();
+            addEventToRemove();
+            addEventToUpdate();
          });
    };
 });
