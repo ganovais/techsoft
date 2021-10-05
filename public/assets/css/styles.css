@@ -144,3 +144,28 @@ input.text-task {
 input.input-enabled {
    background: #3a3a34;
 }
+
+.hidden {
+   display: none;
+}
+
+.fa-times-circle {
+   padding: 10px;
+   background: #ad5454;
+   border-radius: 4px;
+   color: #fffcf2;
+   cursor: pointer;
+}
+
+.fa-check {
+   padding: 10px;
+   background: #278f27;
+   border-radius: 4px;
+   color: #fffcf2;
+   cursor: pointer;
+   margin-left: 10px;
+}
+
+.actions {
+   display: flex;
+}

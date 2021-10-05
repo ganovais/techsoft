@@ -11,5 +11,10 @@ class Task extends Model
 
     protected $fillable = [
        'description',
+       'checked'
+    ];
+
+    protected $casts = [
+       'checked' => 'boolean'
     ];
 }

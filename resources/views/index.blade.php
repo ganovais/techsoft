@@ -7,6 +7,8 @@
    <meta name="csrf-token" content="{{ csrf_token() }}">
    <title>Tarefas</title>
    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+   <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
+   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome/css/all.min.css') }}">
 </head>
 
 <body>
@@ -30,6 +32,9 @@
    <script>
       const baseUrl = "{{url('/')}}";
    </script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
    <script src="{{ asset('assets/js/scripts.js') }}"></script>
 </body>
 
