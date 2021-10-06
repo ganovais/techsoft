@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 Route::get('/tasks', 'SiteController@getTasks');
 Route::post('/tasks', 'SiteController@saveTask');
+Route::put('/task/{id}', 'SiteController@updateTask');
+Route::patch('/task/{id}', 'SiteController@handleCheckTask');
 Route::delete('/task/{id}', 'SiteController@deleteTask');

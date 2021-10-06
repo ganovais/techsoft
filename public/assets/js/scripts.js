@@ -19,12 +19,12 @@ const addEventToRemove = () => {
             .then((data) => {
                if (!data.error) {
                   button.parentElement.remove();
+                  toastr.success("Tarefa excluída com sucesso");
 
                   if (!document.querySelector("#tasks").childNodes.length) {
                      title.innerHTML = "Não há tarefas";
                   }
                }
-               console.log(data);
             });
       };
    });
@@ -38,7 +38,25 @@ const updateTask = (id, button, divActions) => {
       checked,
    };
 
-   fetch(baseUrl + `/task/${id}`);
+   fetch(baseUrl + `/task/${id}`, {
+      method: "PUT",
+      headers: {
+         "Content-Type": "application/json",
+         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')
+            .content,
+      },
+      body: JSON.stringify(data),
+   })
+      .then((response) => response.json())
+      .then((data) => {
+         if (!data.error) {
+            button.childNodes[1].disabled = true;
+            button.childNodes[1].classList.remove("input-enabled");
+            button.childNodes[2].classList.remove("hidden");
+            divActions.remove();
+            toastr.success("Tarefa alterada com sucesso");
+         }
+      });
 };
 
 const addEventToUpdate = () => {
@@ -83,6 +101,34 @@ const addEventToUpdate = () => {
          button.appendChild(divActions);
 
          return;
+      };
+   });
+};
+
+const addEventToCheck = () => {
+   const tasks = document.querySelectorAll(".check-task");
+   tasks.forEach((task) => {
+      task.onchange = () => {
+         const id = task.parentElement.id;
+
+         fetch(baseUrl + `/task/${id}`, {
+            method: "PATCH",
+            headers: {
+               "Content-Type": "application/json",
+               "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]')
+                  .content,
+            },
+         })
+            .then((response) => response.json())
+            .then((data) => {
+               if (!data.error) {
+                  if (data.checked) {
+                     toastr.success("Tarefa concluída com sucesso.");
+                  } else {
+                     toastr.success("Tarefa não concluída.");
+                  }
+               }
+            });
       };
    });
 };
@@ -153,11 +199,13 @@ const addTaskHTML = (task) => {
       '<li class="task-item" id="' +
       task.id +
       '" >' +
-      '<input type="checkbox" />' +
+      `<input type="checkbox" ${
+         task.checked && "checked"
+      } class="check-task" />` +
       '<input disabled class="text-task" value="' +
       task.description +
       '"/>' +
-      '<p class="remove-task"> -- </p>' +
+      '<p class="remove-task"> <i class="fas fa-trash-alt"></i> </p>' +
       "</li>";
 
    document.querySelector("#tasks").insertAdjacentHTML("beforeend", taskHtml);
@@ -165,5 +213,6 @@ const addTaskHTML = (task) => {
    setTimeout(() => {
       addEventToRemove();
       addEventToUpdate();
+      addEventToCheck();
    }, 400);
 };
