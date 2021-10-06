@@ -36,5 +36,10 @@
     - php artisan key:generate  
     - php artisan serve  
 
+## Login Laravel  
+    Rodar os seguintes comandos  
+    - composer require laravel/ui:^2.4  
+    - php artisan ui vue --auth  
+
 
 https://github.com/colorlibhq/AdminLTE
