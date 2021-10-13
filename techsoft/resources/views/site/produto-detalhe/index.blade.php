@@ -1,14 +1,60 @@
 @extends('layouts.site')
 
-
 @section('content')
 
-@include('site.home.banner')
+<div class="banner-top">
+    <div class="banner-top-blur"></div>
+    <h1 class="title-blur">Mouse Razer Basilisk</h1>
+</div>
 
 <div class="container mt-5">
     <div class="row">
+        <div class="order-2 order-md-1 col-12 col-lg-8">
+            <div class="card-info">
+                <div class="card-info-header">
+                    <h4 class="mb-0">Mouse Razer Basilisk</h4>
+                    <p class="orange-o">Acessórios</p>
+                </div>
+
+                <div class="card-info-description">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+                        accusamus quae est similique accusantium, laborum enim
+                        recusandae eveniet expedita repellat deleniti obcaecati aliquam
+                        deserunt sapiente ipsam a exercitationem ad quod? Lorem ipsum
+                        dolor sit, amet consectetur adipisicing elit. Minima in unde
+                        illo, optio tempora error obcaecati cum praesentium, sequi
+                        delectus maiores minus ratione a at ea ipsa nisi vitae sunt?
+                    </p>
+                </div>
+
+                <div class="card-info-price mt-5">
+                    <h2 class="orange">R$ 590,00</h2>
+                    <button class="btn btn-orange btn-theme">
+                        <p class="mb-0">Comprar</p>
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-1 order-md-2 col-12 col-lg-4">
+            <div class="card-img">
+                <img src="{{ asset('site/assets/images/mouse-razer-basilisk.png') }}" alt="Mouse Razer Basilisk"
+                    title="Mouse Razer Basilisk" class="img-fluid" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 mb-5">
+        <div class="col-12 d-flex justify-content-center">
+            <p class="hr"></p>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-12">
-            <h3>Produtos</h3>
+            <h3>Produtos Relacionados</h3>
         </div>
     </div>
 
@@ -94,93 +140,13 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-produto mb-4 col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="produto">
-                <div class="img-produto">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <img src="{{ asset('site/assets/images/iphone11.png') }}" class="img-fluid" />
-                    </a>
-                </div>
-
-                <div class="detalhe-produto mb-3">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <p class="mb-0">Iphone 11</p>
-                    </a>
-                    <small class="orange-o">Celulares</small>
-                </div>
-
-                <div class="add-cart-produto pb-1">
-                    <p class="preco-produto">R$4300,00</p>
-                    <i class="fas fa-plus"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-produto mb-4 col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="produto">
-                <div class="img-produto">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <img class="img-fluid wd-70" src="{{ asset('site/assets/images/airpods-pro.png') }}" alt="" />
-                    </a>
-                </div>
-                <div class="detalhe-produto mb-3">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <p class="mb-0">AirPods Pro</p>
-                    </a>
-                    <small class="orange-o">Acessórios</small>
-                </div>
-                <div class="add-cart-produto pb-1">
-                    <p class="preco-produto">R$ 1790,00</p>
-                    <i class="fas fa-plus"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-produto mb-4 col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="produto">
-                <div class="img-produto">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <img class="img-fluid" src="{{ asset('site/assets/images/macbook-pro.png') }}" alt="" />
-                    </a>
-                </div>
-                <div class="detalhe-produto mb-3">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <p class="mb-0">Macbook Pro</p>
-                    </a>
-                    <small class="orange-o">Notebooks</small>
-                </div>
-                <div class="add-cart-produto pb-1">
-                    <p class="preco-produto">R$ 23000,00</p>
-                    <i class="fas fa-plus"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-produto mb-4 col-lg-3 col-md-4 col-sm-6 col-12">
-            <div class="produto">
-                <div class="img-produto">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <img class="img-fluid" src="{{ asset('site/assets/images/tv1.png') }}" alt="" />
-                    </a>
-                </div>
-                <div class="detalhe-produto mb-3">
-                    <a href="{{ url('/produto/nome-produto') }}">
-                        <p class="mb-0">Smart TV 42 - Samsung</p>
-                    </a>
-                    <small class="orange-o">TVs</small>
-                </div>
-                <div class="add-cart-produto pb-1">
-                    <p class="preco-produto">R$ 2390,00</p>
-                    <i class="fas fa-plus"></i>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="row mt-5 mb-5">
         <div class="col-12 center-button">
-            <button class="btn btn-theme btn-orange">Ver mais produtos</button>
+            <button class="btn btn-theme btn-orange">
+                <p class="mb-0">Ver mais produtos</p>
+            </button>
         </div>
     </div>
 </div>

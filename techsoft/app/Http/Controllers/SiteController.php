@@ -12,4 +12,21 @@ class SiteController extends Controller
         return view('site.home.index');
     }
 
+    public function carrinho()
+    {
+        return view('site.carrinho.index');
+    }
+
+    public function contato()
+    {
+        return view('site.contato.index');
+    }
+
+
+    public function produtoDetalhe($slug)
+    {
+        return view('site.produto-detalhe.index');
+    }
+
+
 }
