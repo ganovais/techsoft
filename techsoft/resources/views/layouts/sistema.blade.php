@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('sistema/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('sistema/plugins/daterangepicker/daterangepicker.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -36,7 +37,7 @@
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        Sair
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -63,7 +64,9 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">
+                            {{ Auth::user()->name }}
+                        </a>
                     </div>
                 </div>
 
@@ -74,10 +77,28 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                            <a href="{{ url('/sistema/dashboard') }}"  class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item menu-open">
+                            <a href="{{ url('/sistema/categories') }}" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Categorias
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item menu-open">
+                            <a href="{{ url('/sistema/products') }}" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Produtos
                                 </p>
                             </a>
                         </li>
@@ -88,7 +109,9 @@
             <!-- /.sidebar -->
         </aside>
 
-        @yield('content')
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
 
         <footer class="main-footer">
             <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -101,10 +124,13 @@
     <script src="{{ asset('sistema/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('sistema/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 
-    <script src="{{ asset('sistema/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
     <script src="{{ asset('sistema/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('sistema/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ asset('sistema/dist/js/adminlte.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    @yield('scripts')
 </body>
 
 </html>

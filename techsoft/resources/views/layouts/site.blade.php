@@ -55,6 +55,12 @@
                             <i class="fas fa-shopping-cart mt-1"></i>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('login') }}">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
