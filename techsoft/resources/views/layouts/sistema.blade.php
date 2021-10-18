@@ -10,12 +10,14 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{ asset('sistema/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://codeseven.github.io/toastr/build/toastr.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('sistema/dist/css/adminlte.min.css') }}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('sistema/plugins/daterangepicker/daterangepicker.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    @yield('styles')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -124,7 +126,7 @@
     <script src="{{ asset('sistema/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('sistema/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{ asset('sistema/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('sistema/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ asset('sistema/dist/js/adminlte.js') }}"></script>

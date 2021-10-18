@@ -25,6 +25,47 @@ class CategoryController extends Controller
         $categoryModel = new Category();
         $categoryModel->fill($request->toArray());
         $categoryModel->save();
+
+        return response()->json([
+            'error' => false,
+            'category' => $categoryModel,
+            'message' => 'Categoria cadastrada com sucesso.'
+        ]);
+    }
+
+    public function show($id)
+    {
+        $categoryModel = new Category();
+
+        return response()->json([
+            'error' => false,
+            'category' => $categoryModel->findOrFail($id),
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $categoryModel = new Category();
+        $category = $categoryModel->findOrFail($id);
+        $category->update(['title' => $request['title']]);
+
+        return response()->json([
+            'error' => false,
+            'category' => $categoryModel,
+            'message' => 'Categoria alterada com sucesso.'
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $categoryModel = new Category();
+        $category = $categoryModel->findOrFail($id);
+        $category->delete();
+
+        return response()->json([
+            'error' => false,
+            'message' => 'Categoria deletada com sucesso.'
+        ]);
     }
 
 }

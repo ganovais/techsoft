@@ -1,13 +1,32 @@
 @extends('layouts.sistema')
 
-@section('content')
+@section('styles')
+<style>
+a {
+    text-decoration: none;
+}
 
+i {
+    cursor: pointer;
+}
+
+.fa-trash {
+    color: #d51d1d
+}
+
+.fa-pencil-alt {
+    color: #3a67eb
+}
+</style>
+@endsection
+
+@section('content')
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalCategory" tabindex="-1" aria-labelledby="modalCategoryLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
+                <h5 class="modal-title" id="modalCategoryLabel">
                     Cadastrar categoria
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -39,7 +58,7 @@
             </div>
 
             <div class="col-sm-6 text-right">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCategory">
                     Cadastrar <i class="ml-1 fas fa-plus"></i>
                 </button>
             </div>
@@ -67,13 +86,8 @@
                                     <td>{{ $category->id }}</td>
                                     <td>{{ $category->title }}</td>
                                     <td class="text-right">
-                                        <a href="{{ url('sistema/categories/' . $category->id . '/edit')}}">
-                                            <i class="fas fa-pencil-alt mr-3"></i>
-                                        </a>
-
-                                        <a href="#" data-id="{{ $category->id }}" class="delete">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
+                                        <i data-id="{{ $category->id }}" class="fas fa-pencil-alt mr-3"></i>
+                                        <i  data-id="{{ $category->id }}" class="fas fa-trash"></i>
                                     </td>
                                 </tr>
                                 @empty
@@ -94,23 +108,85 @@
 @section('scripts')
 <script>
     const BASE_URL = "{{ url('/sistema/categories') }}"
-    const token = document.getElementsByName('_token')[0].value;
-    const saveButton = document.querySelector('#save_category');
-    const input = document.querySelector('#title')
+    let categoryId = 0;
 
-    saveButton.onclick = () => {
-        const data = {
-            title: input.value
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+        const token = document.getElementsByName('_token')[0].value;
+        const saveButton = document.querySelector('#save_category');
+        const input = document.querySelector('#title')
 
-        fetch(BASE_URL, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": token
-            },
-            body: JSON.stringify(data)
+        var myModalEl = document.getElementById('modalCategory')
+        myModalEl.addEventListener('hidden.bs.modal', function (event) {
+            input.value = '';
+            categoryId = 0;
         })
-    }
+
+        const editList = document.querySelectorAll('.fa-pencil-alt');
+        const deleteList = document.querySelectorAll('.fa-trash');
+
+        editList.forEach(element => {
+            element.onclick = () => {
+                const id = element.dataset.id;
+                fetch(`${BASE_URL}/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if(!data.error) {
+                        categoryId = data.category.id;
+                        input.value = data.category.title;
+                        $('#modalCategory').modal('show');
+                    }
+                })
+            }
+        });
+
+        deleteList.forEach(element => {
+            element.onclick = () => {
+                const id = element.dataset.id;
+                fetch(`${BASE_URL}/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        "X-CSRF-TOKEN": token
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(!data.error) {
+                        toastr.success(data.message)
+                        element.parentElement.parentElement.remove();
+                    }
+                })
+            }
+        });
+        saveButton.onclick = () => {
+            const data = {
+                title: input.value
+            }
+
+            let method = 'POST';
+            let url = BASE_URL;
+            if(categoryId) {
+                method = 'PUT';
+                url = `${BASE_URL}/${categoryId}`;
+            }
+            fetch(url, {
+                method,
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": token
+                },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+            .then(data => {
+                if(!data.error) {
+                    toastr.success(data.message)
+                    $('#modalCategory').modal('hide');
+                    setTimeout(() => {
+                        window.location.href = "/sistema/categories"
+                    }, 1000);
+                }
+            })
+        }
+    })
+
 </script>
 @endsection
