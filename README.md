@@ -23,6 +23,10 @@
         - No navegador localhost/nome_projeto/public  
         - Ou criar virtualHost
 
+## Resource Controller Laravel  
+    Link da documentação
+    - https://laravel.com/docs/7.x/controllers#resource-controllers            
+
 ## Criando Migrations  
     Dentro da pasta LARAVEL do projeto, vamos criar as migratins iniciais  
     - php artisan config:clear  
