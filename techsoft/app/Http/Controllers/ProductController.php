@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -14,12 +15,15 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('sistema.dashboard.index');
+        $product = new Product();
+        $products = $product->get();
+        return view('sistema.products.index', compact('products'));
     }
 
-    public function categories()
+    public function create()
     {
-        return view('sistema.categories.index');
+        return view('sistema.products.create');
     }
+
 
 }
