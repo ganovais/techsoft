@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <h3 class="card-title" id="title">Cadastrando</h3>
                     </div>
-                    <form id="save" enctype="multipart/form-data">
+                    <form method="POST" id="save" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
@@ -97,4 +97,38 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+    const BASE_URL = '{{ url("/sistema/products") }}';
+    const PATH_URL = '{{ url("") }}';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('#title_input');
+        const price = document.querySelector('#price_input');
+        const category = document.querySelector('#category_input');
+        const description = document.querySelector('#description_input');
+        const form = document.querySelector('#save');
+        const token = document.getElementsByName('_token')[0].value;
+
+        form.onsubmit = () => {
+            const formData = new FormData(form);
+
+            fetch(BASE_URL, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': token
+                },
+                body: formData
+            }).then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+
+            return false
+        }
+
+    })
+</script>
 @endsection
