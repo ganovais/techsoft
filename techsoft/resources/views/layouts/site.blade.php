@@ -58,7 +58,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('login') }}">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user mt-1"></i>
                         </a>
                     </li>
                 </ul>

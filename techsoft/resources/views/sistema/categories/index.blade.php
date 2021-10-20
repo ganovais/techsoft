@@ -15,6 +15,7 @@ i {
 }
 
 .fa-pencil-alt {
+    margin-right: 10px;
     color: #3a67eb
 }
 </style>

@@ -1,5 +1,26 @@
 @extends('layouts.sistema')
 
+@section('styles')
+<style>
+a {
+    text-decoration: none;
+}
+
+i {
+    cursor: pointer;
+}
+
+.fa-trash {
+    color: #d51d1d
+}
+
+.fa-pencil-alt {
+    margin-right: 10px;
+    color: #3a67eb
+}
+</style>
+@endsection
+
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
@@ -45,7 +66,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td>Não há categorias ainda!</td>
+                                    <td>Não há produtos ainda!</td>
                                 </tr>
                                 @endforelse
                             </tbody>
@@ -56,4 +77,37 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+    const BASE_URL = "{{ url('/sistema/products') }}"
+    let categoryId = 0;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const token = document.getElementsByName('_token')[0].value;
+        const deleteList = document.querySelectorAll('.fa-trash');
+
+        deleteList.forEach(element => {
+            element.onclick = () => {
+                const id = element.dataset.id;
+                fetch(`${BASE_URL}/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        "X-CSRF-TOKEN": token
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(!data.error) {
+                        toastr.success(data.message)
+                        element.parentElement.parentElement.remove();
+                    }
+                })
+            }
+        });
+
+    })
+
+</script>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\File;
 use File as Arquivo;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -30,9 +31,20 @@ class ProductController extends Controller
         return view('sistema.products.create', compact('categories'));
     }
 
+    public function edit($id)
+    {
+        $model = new Product();
+        $product = $model->with('category', 'image')->findOrFail($id);
+
+        $category = new Category();
+        $categories = $category->get();
+        return view('sistema.products.create', compact('product', 'categories'));
+    }
+
     public function store(Request $request)
     {
         $model = new Product();
+        $request['slug'] = Str::slug($request['title'], '-');
         $product = $model->create($request->toArray());
 
         //info($request);
@@ -58,6 +70,45 @@ class ProductController extends Controller
         ]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $model = new Product();
+        $modelFile = new File();
+        $model = $model->findOrFail($id);
+
+        $request['slug'] = Str::slug($request['title'], '-');
+
+        if(!empty($_FILES['image']['name'])) {
+            $image = $model->image;
+            $path = './site/uploads/products/';
+            $name_arr = explode('/', $image->path);
+
+            if(file_exists($path . $name_arr[4]) && $name_arr[4] != '') {
+                unlink($path . $name_arr[4]);
+            }
+            $this->save_file($_FILES, $request->toArray());
+
+            $image->delete();
+
+            $file = [
+                'path' => '/site/uploads/products' . '/' . $_FILES['image']['name'],
+                'fileable_id' => $model->id,
+                'fileable_type' => 'products',
+                'category' => 'image'
+            ];
+
+            $modelFile->create($file);
+        }
+
+        $model->update($request->toArray());
+
+        return response()->json([
+            'error' => false,
+            'product' => $model,
+            'message' => 'Produto alterado com sucesso.'
+        ]);
+    }
+
     public function save_file($file, $data)
     {
         $name = $file['image']['name'];
@@ -67,6 +118,18 @@ class ProductController extends Controller
 
         $output_file = $path . '/' . $name;
         $data['image']->move($path, $output_file);
+    }
+
+    public function destroy($id)
+    {
+        $model = new Product();
+        $product = $model->findOrFail($id);
+        $product->delete();
+
+        return response()->json([
+            'error' => false,
+            'message' => 'Produto deletado com sucesso.'
+        ]);
     }
 
 }

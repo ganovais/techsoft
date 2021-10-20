@@ -11,8 +11,19 @@ class Product extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'price',
         'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function image()
+    {
+        return $this->morphOne('App\Models\File', 'fileable')->where('category', 'image');
+    }
 }

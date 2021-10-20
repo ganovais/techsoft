@@ -10,6 +10,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `techsoft`.`products` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
+  `slug` VARCHAR(255) NOT NULL,
   `description` TEXT NOT NULL,
   `price` DOUBLE(11,2) NOT NULL,
   `category_id` INT UNSIGNED NOT NULL,

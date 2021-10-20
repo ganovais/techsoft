@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
 
 class SiteController extends Controller
 {
@@ -17,9 +19,23 @@ class SiteController extends Controller
         return view('site.carrinho.index');
     }
 
-    public function produtos()
+    public function produtos(Request $request)
     {
-        return view('site.produtos.index');
+        $products = new Product();
+        $categories = new Category();
+
+        $products = $products->with('category', 'image');
+        if(isset($request->search)) {
+            $products = $products->where('title', 'LIKE', '%' . $request->search . '%');
+        }
+
+        if(isset($request->category)) {
+            $products = $products->where('category_id', $request->category);
+        }
+
+        $categories = $categories->get();
+        $products = $products->get();
+        return view('site.produtos.index', compact('products', 'categories'));
     }
 
     public function contato()
@@ -30,7 +46,9 @@ class SiteController extends Controller
 
     public function produtoDetalhe($slug)
     {
-        return view('site.produto-detalhe.index');
+        $model = new Product();
+        $product = $model->where('slug', $slug)->first();
+        return view('site.produto-detalhe.index', compact('product'));
     }
 
 

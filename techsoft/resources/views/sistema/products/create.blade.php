@@ -11,7 +11,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
-                        <a href="{{ url('/sistema') }}">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">
                         <a href="{{ url('sistema/products') }}">Produtos</a>
@@ -34,7 +34,7 @@
                         @csrf
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="name">Título</label>
                                         <input type="text" class="form-control" name="title" id="title_input"
@@ -42,18 +42,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="name">Preço</label>
                                         <input type="number" class="form-control" name="price" id="price_input"
                                             placeholder="Preço">
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="active" id="active_input">
-                                        <label class="form-check-label" for="active_input">Ativo/Desativo</label>
                                     </div>
                                 </div>
 
@@ -103,6 +96,7 @@
 <script>
     const BASE_URL = '{{ url("/sistema/products") }}';
     const PATH_URL = '{{ url("") }}';
+    const product = {!! (isset($product)) ? json_encode($product): 'null' !!};
 
     document.addEventListener('DOMContentLoaded', () => {
         const title = document.querySelector('#title_input');
@@ -111,11 +105,24 @@
         const description = document.querySelector('#description_input');
         const form = document.querySelector('#save');
         const token = document.getElementsByName('_token')[0].value;
+        const image = document.querySelector('#product_image');
+
+        if(product && product.id) {
+            title.value = product.title;
+            price.value = product.price;
+            description.value = product.description;
+            category.value = product.category.id;
+            image.src = PATH_URL + product.image.path;
+        }
 
         form.onsubmit = () => {
             const formData = new FormData(form);
+            let url = BASE_URL;
+            if(product && product.id) {
+                url = BASE_URL + '/' + product.id;
+            }
 
-            fetch(BASE_URL, {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': token
@@ -123,7 +130,12 @@
                 body: formData
             }).then(response => response.json())
             .then(data => {
-                console.log(data);
+                if(!data.error) {
+                    toastr.success(data.message)
+                    setTimeout(() => {
+                        window.location.href = "/sistema/products"
+                    }, 1000);
+                }
             })
 
             return false

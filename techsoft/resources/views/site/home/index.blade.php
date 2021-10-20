@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="add-cart-produto pb-1">
-                    <p class="preco-produto">R$590,00</p>
+                    <p class="preco-produto">R$ 590,00</p>
                     <i class="fas fa-plus"></i>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="add-cart-produto pb-1">
-                    <p class="preco-produto">R$4300,00</p>
+                    <p class="preco-produto">R$ 4300,00</p>
                     <i class="fas fa-plus"></i>
                 </div>
             </div>
