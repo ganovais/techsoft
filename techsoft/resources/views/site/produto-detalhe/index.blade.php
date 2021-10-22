@@ -32,8 +32,11 @@
 
         <div class="order-1 order-md-2 col-12 col-lg-4">
             <div class="card-img">
-                <img src="{{ asset($product->image->path) }}" alt="{{$product->title}}"
-                    title="{{$product->title}}" class="img-fluid" />
+                @if(isset($product->image->path))
+                <img src="{{ asset($product->image->path) }}" class="img-fluid wd-70" title="{{ $product->title }}"/>
+                @else
+                <img src="{{ asset('site/assets/images/empty.svg') }}" class="img-fluid wd-70" title="{{ $product->title }}"/>
+                @endif
             </div>
         </div>
     </div>

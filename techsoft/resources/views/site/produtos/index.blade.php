@@ -48,17 +48,22 @@
                 <div class="col-12">
                     <p>Listando {{ $products->count() }} produtos</p>
                 </div>
+
                 @forelse($products as $product)
                 <div class="col-produto mb-4 col-lg-4 col-sm-6 col-12">
                     <div class="produto">
                         <div class="img-produto">
                             <a href="{{ url('/produto/' . $product->slug) }}">
-                                <img src="{{ asset($product->image->path) }}" class="img-fluid wd-70" />
+                                @if(isset($product->image->path))
+                                <img src="{{ asset($product->image->path) }}" class="img-fluid" />
+                                @else
+                                <img src="{{ asset('site/assets/images/empty.svg') }}" class="img-fluid wd-70" />
+                                @endif
                             </a>
                         </div>
 
                         <div class="detalhe-produto mb-3">
-                        <a href="{{ url('/produto/' . $product->slug) }}">
+                            <a href="{{ url('/produto/' . $product->slug) }}">
                                 <p class="mb-0">{{ $product->title }}</p>
                             </a>
                             <small class="orange-o">{{ $product->category->title }}</small>

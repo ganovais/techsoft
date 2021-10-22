@@ -106,16 +106,24 @@
         const form = document.querySelector('#save');
         const token = document.getElementsByName('_token')[0].value;
         const image = document.querySelector('#product_image');
+        const file = document.querySelector("#image_input");
 
+        console.log(product);
         if(product && product.id) {
             title.value = product.title;
             price.value = product.price;
             description.value = product.description;
             category.value = product.category.id;
-            image.src = PATH_URL + product.image.path;
+            if(product.image) {
+                image.src = PATH_URL + product.image.path;
+            }
         }
 
         form.onsubmit = () => {
+            if(!image.src && (file.value == "" || !file.value)) {
+                toastr.warning('Escolher um arquivo para salvar.');
+                return false;
+            }
             const formData = new FormData(form);
             let url = BASE_URL;
             if(product && product.id) {

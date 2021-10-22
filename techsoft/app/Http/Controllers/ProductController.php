@@ -80,15 +80,17 @@ class ProductController extends Controller
 
         if(!empty($_FILES['image']['name'])) {
             $image = $model->image;
-            $path = './site/uploads/products/';
-            $name_arr = explode('/', $image->path);
 
-            if(file_exists($path . $name_arr[4]) && $name_arr[4] != '') {
-                unlink($path . $name_arr[4]);
+            if(isset($image)) {
+                $path = './site/uploads/products/';
+                $name_arr = explode('/', $image->path);
+
+                if(file_exists($path . $name_arr[4]) && $name_arr[4] != '') {
+                    unlink($path . $name_arr[4]);
+                }
+                $image->delete();
             }
             $this->save_file($_FILES, $request->toArray());
-
-            $image->delete();
 
             $file = [
                 'path' => '/site/uploads/products' . '/' . $_FILES['image']['name'],
